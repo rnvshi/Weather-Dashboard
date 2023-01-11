@@ -10,25 +10,31 @@
 
 <body>
     <header>
-        <h1>Weather Dashboard</h1>
+        <h1 id="top">Weather Dashboard</h1>
     </header>
 
-    <aside>
-        <section class="citySearch">
-            <h1>Search for a City:</h1>
-            <br>
-            <input type="text" id="city-input" name="cityInput">
-            <br><br>
-            <button id="search-btn">Search</button>
-        </section>
+    <section class="content">
+        <aside>
+            <section class="citySearch">
+                <h2>Search for a City:</h1>
+                    <br>
+                    <input type="text" id="city-input" name="cityInput">
+                    <br><br>
+                    <button id="search-btn">Search</button>
+            </section>
 
-        <section class="previousSearch"></section>
-    </aside>
+            <section class="previousSearch"></section>
+        </aside>
 
-    <main>
-        <section id="currentWeather"></section>
-        <section id="forecastFive"></section>
-    </main>
+        <main>
+            <section id="currentWeather"></section>
+            <section id="forecastFive">
+                <header>
+                    <h2 id="forecastHead">
+                </header>
+            </section>
+        </main>
+    </section>
 </body>
 
 <script src="./assets/js/script.js"></script>

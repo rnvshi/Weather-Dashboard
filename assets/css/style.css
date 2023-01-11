@@ -10,15 +10,24 @@ body {
     color: white;
 }
 
-header {
+header #top {
     background-color: #4E8098;
     text-align: center;
     color: white;
     padding: 20px;
+    margin-top: 20px;
+    width: fit-content;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 }
 
 aside {
     padding: 20px;
+    width: 25%;
+    height: 100%;
+    border: solid blue 3px;
 }
 
 .citySearch button {
@@ -33,4 +42,67 @@ aside {
     padding: 20px;
     border-radius: 50px;
     border: none;
+}
+
+h3 {
+    background-color: #4E8098;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 20px;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+#currentWeather {
+    width: 75%;
+    float: right;
+    padding: 20px;
+}
+
+#forecastFive {
+    width: 75%;
+    float: right;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card {
+    background-color: #264653;
+    color: white;
+    border-radius: 50px;
+    margin: 5px;
+    width: 19%;
+    height: fit-content;
+    padding-bottom: 10px;
+}
+
+.card h1 {
+    padding-top: 20px;
+}
+
+.card h1,
+.card p {
+    margin: 10px;
+    margin-left: 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    position: relative;
+    bottom: 300px;
+    border: solid black;
+}
+
+main header {
+    width: 100%;
+}
+
+h2 {
+    font-size: 30px;
+    color: white;
 }
