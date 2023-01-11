@@ -1,4 +1,6 @@
 
+// call elements from html
+
 let city = "London";
 
 const APIKey = "20d07d0e39f75d73b8bf8586ae59bfc4";
@@ -9,6 +11,7 @@ let lon = "";
 let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIKey;
 
 
+// add event listener to submit button
 fetch(geoURL)
     .then(response => {
         return response.json();
