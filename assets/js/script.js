@@ -57,7 +57,7 @@ const APIKey = "20d07d0e39f75d73b8bf8586ae59bfc4";
 searchBtn.addEventListener("click", () => {
 
     main.style.display = "block";
-    let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityInput.value + "&appid=" + APIKey;
+    let geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityInput.value + "&appid=" + APIKey;
 
     cityInput.value = "";
     let lat = "";
