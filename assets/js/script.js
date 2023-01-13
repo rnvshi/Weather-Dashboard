@@ -1,20 +1,22 @@
+// CALL ELEMENTS FROM HTML
 
-// call elements from html
-
-const searchBtn = document.getElementById("search-btn");
-let cityInput = document.getElementById("city-input");
-let searchHistory = document.querySelector(".previousSearch");
-let currentWeather = document.getElementById("currentWeather");
-let foreCast = document.getElementById("forecastFive");
-let forecastHead = document.getElementById("forecastHead");
 let main = document.querySelector("main");
 
+const cityInput = document.getElementById("city-input");
+const searchBtn = document.getElementById("search-btn");
+const searchHistory = document.querySelector(".previousSearch");
+const currentWeather = document.getElementById("currentWeather");
+const foreCast = document.getElementById("forecastFive");
+const forecastHead = document.getElementById("forecastHead");
+
+// CURRENT WEATHER ELEMENTS
 const curCity = document.getElementById("curCity");
 const curImg = document.getElementById("curIcon");
 const curTemp = document.getElementById("curTemp");
 const curWind = document.getElementById("curWind");
 const curHum = document.getElementById("curHum");
 
+// FORECAST WEATHER ELEMENTS
 const card1 = document.getElementById("first");
 const date1 = document.getElementById("date1");
 const img1 = document.getElementById("icon1");
@@ -50,14 +52,15 @@ const temp5 = document.getElementById("temp5");
 const wind5 = document.getElementById("wind5");
 const hum5 = document.getElementById("hum5");
 
+// API KEY
 const APIKey = "20d07d0e39f75d73b8bf8586ae59bfc4";
 
-
-// add event listener to submit button
+// ADD EVENT LISTENER TO SEARCH BUTTON TO START FETCH
 searchBtn.addEventListener("click", () => {
 
+    // SHOW WEATHER CARDS AND GENERATE TEXT UPON RESPONSE RETRIEVAL
     main.style.display = "block";
-    let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityInput.value + "&appid=" + APIKey;
+    let geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityInput.value + "&appid=" + APIKey;
 
     cityInput.value = "";
     let lat = "";
@@ -71,6 +74,8 @@ searchBtn.addEventListener("click", () => {
             return response.json();
         })
         .then(data => {
+
+            // RETRIEVES LAT & LON DATA FROM GEO FETCH ALLOWING A STRING ENTRY TO BE CONVERTED TO COORDINATES WHICH ARE THEN INPUT INTO WEATHER DATA RETRIEVAL
             geoData = data;
             lat = geoData[0].lat;
             lon = geoData[0].lon;
@@ -85,6 +90,7 @@ searchBtn.addEventListener("click", () => {
                 .then(data => {
                     forecastData = data;
 
+                    // STORES CURRENT WEATHER CONDITIONS DATA IN LOCAL
                     let currentCond = {
                         date: (forecastData.list[0].dt_txt).split(" ")[0],
                         img: "./assets/images/" + forecastData.list[0].weather[0].icon + ".png",
@@ -98,6 +104,7 @@ searchBtn.addEventListener("click", () => {
 
                     let forecastFive = [];
 
+                    // ITERATIVELY STORES FORECAST DATA FOR 5 DAYS (24H HOURS APART) IN LOCAL
                     for (i = 5; i < forecastData.list.length; i += 8) {
 
                         let forecast = {
@@ -113,6 +120,7 @@ searchBtn.addEventListener("click", () => {
 
                     localStorage.setItem(geoData[0].name + "Forecast", JSON.stringify(forecastFive));
 
+                    // GENERATES TEXT CONTENT FOR WEATHER CARDS
                     curCity.textContent = "Currently in " + geoData[0].name + " " + currentCond.date;
                     curImg.src = currentCond.img;
                     curTemp.textContent = "Temp: " + currentCond.temp + "°C";
@@ -150,6 +158,7 @@ searchBtn.addEventListener("click", () => {
                     wind5.textContent = "Wind " + forecastFive[4].wind + "km/h";
                     hum5.textContent = "Humidity: " + forecastFive[4].hum + "%";
 
+                    // CREATES AN ELEMENT THAT STORES PREVIOUS CITY SEARCHED AND CHANGES CARD TEXT TO CITY DATA IF CLICKED
                     let searchQuery = document.createElement("h3");
                     searchQuery.textContent = geoData[0].name;
                     searchQuery.classList.add("queryBtn");
